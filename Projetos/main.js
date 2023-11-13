@@ -14,7 +14,23 @@ form.addEventListener('submit', addItem);
 
 list.addEventListener("click", reomoveitem);
 
-function filtraritem(){};
+function filtraritem(evento){
+    // Recebendo valores digitados
+    let txt = evento.target.value.tolowerCase(); //Converte para minúsculo
+    // Buscar todos os itens (li)
+    let itens = document.getElementsByTagName('li');
+
+    // converter para um Array o
+    Array.from(itens).forEach( function (item){
+        let itemName = item.firstChild.textContent;
+        if (itemName.toLowerCase().indexOf(txt) != -1)  {
+            item.style.display = 'block';
+        } else {
+            item.style.dsiplay = 'nome';
+            console.log(itemName.tolowerCase().indexOf(txt))
+        }
+    });
+};
 
 // Função para adicionar um novo item
 function addItem(evento){
